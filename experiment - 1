@@ -1,0 +1,64 @@
+experiment 1.1 contains duplicate (leetcode problem number -217 )
+Aim:- Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+Alogorithm :- 
+1. Start.
+2. Create an empty set named `seen`.
+3. Traverse each element `num` in the array `nums`.
+4. Check if `num` is already present in the `seen` set.
+5. If `num` is present, return `True`.
+6. Otherwise, add `num` to the `seen` set.
+7. Repeat Steps 3 to 6 until all elements are processed.
+8. If no duplicate is found, return `False`.
+9. Stop.
+
+Code :-
+class Solution(object):
+    def containsDuplicate(self, nums):
+        seen = set()
+
+        for num in nums:
+            if num in seen:
+                return True
+
+            seen.add(num)
+
+        return False
+
+
+
+
+
+
+Experiment 1.2  contains duplicates II (leetcode problem number-219)
+Aim:-Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+
+Algorithm :-
+1. Start.
+2. Create an empty dictionary named `last_seen`.
+3. Traverse each element `num` in the array `nums` along with its index `i`.
+4. Check if `num` is already present in the `last_seen` dictionary.
+5. If `num` is present, calculate the difference between the current index `i` and the stored index `last_seen[num]`.
+6. If the index difference is less than or equal to `k`, return `True`.
+7. Otherwise, update the index of `num` in the `last_seen` dictionary with the current index `i`.
+8. Repeat Steps 3 to 7 until all elements are processed.
+9. If no nearby duplicate is found, return `False`.
+10. Stop.
+
+
+Code :-
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        last_seen = {}
+
+        for i, num in enumerate(nums):
+            if num in last_seen:
+                if i - last_seen[num] <= k:
+                    return True
+
+            last_seen[num] = i
+
+        return False
+
+
+        
